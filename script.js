@@ -6,6 +6,9 @@ const message = document.querySelector('#message')
 const results = document.querySelector('#results')
 const difficulty = document.querySelector('#difficulty')
 const changeDifficulty = document.querySelector('#changeDifficulty')
+const easy = document.querySelector(`#easy`)
+const medium = document.querySelector(`#medium`)
+const hard = document.querySelector(`#hard`)
 
 let DIFFICULTY_LEVEL = 'easy'
 let MAX_COLORS = 3
@@ -35,18 +38,6 @@ const timeoutWrongAnswer = () => {
     }, 1500)
 }
 
-const getNewColor = async () => {
-    //Get color from api
-    let image = ''
-    const url = `https://www.thecolorapi.com/id?rgb=${randomRgb()}`
-    await fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-            image = data.image.bare
-        })
-    return image
-}
-
 const showColors = () => {
     //show list with colors AND color picked
     list.style.display = 'block'
@@ -57,18 +48,17 @@ const showColors = () => {
 }
 
 const extraColor = async (position) => {
-    //get new color from API
-    const newColorImgUrl = await getNewColor()
+    //get new random Color
+    const color = randomRgb()
 
     //Create button
     let button = document.createElement('button')
     button.className = 'btn'
     button.id = `btn-${position}`
-
-    //Create img
-    let img = document.createElement('img')
-    img.id = `img-${position}`
-    img.src = newColorImgUrl
+    
+    //Add styles
+    button.style.backgroundColor = `rgb(${color})`
+    button.style.borderColor = '#222'
 
     //Onclick
     button.onclick = () => {
@@ -95,7 +85,6 @@ const extraColor = async (position) => {
     }
 
     //Append elements
-    button.append(img)
     list.appendChild(button)
 
     //show list if it is last color
@@ -155,13 +144,13 @@ const getCorrectColor = async (position) => {
             button.className = 'btn'
             button.id = `btn-${position}`
 
-            //create img with correct color
-            let img = document.createElement('img')
-            img.src = data.image.bare
+            //Add styles
+            button.style.backgroundColor = data.hex.value
+            button.style.border = '#222'
 
             //onclick
             button.onclick = function () {
-                console.log('CORRECT!')
+                // console.log('CORRECT!')
                 clearTimeout(TIME_OUT_WRONG_ANSWER)
                 button.disabled = true
                 clearExtraColors(position)
@@ -174,7 +163,6 @@ const getCorrectColor = async (position) => {
             }
             
             //Append elements
-            button.append(img)
             list.appendChild(button)
 
             //show list if it is last color
@@ -206,31 +194,25 @@ const setDifficulty = (element, difficulty) => {
 
     //restore default style to rest + set MAX_COLORS
     if (difficulty === 'easy') {
-        const medium = document.querySelector(`#medium`)
         medium.classList.remove("bigButton")
         medium.disabled = false
 
-        const hard = document.querySelector(`#hard`)
         hard.classList.remove("bigButton")
         hard.disabled = false
 
         MAX_COLORS = 3
     } else if (difficulty === 'medium') {
-        const easy = document.querySelector(`#easy`)
         easy.classList.remove("bigButton")
         easy.disabled = false
 
-        const hard = document.querySelector(`#hard`)
         hard.classList.remove("bigButton")
         hard.disabled = false
 
         MAX_COLORS = 6
     } else {
-        const easy = document.querySelector(`#easy`)
         easy.classList.remove("bigButton")
         easy.disabled = false
 
-        const medium = document.querySelector(`#medium`)
         medium.classList.remove("bigButton")
         medium.disabled = false
 
@@ -265,7 +247,7 @@ const letsPlay = async () => {
     const correctPosition = Math.floor(Math.random() * MAX_COLORS)
 
     //Show colors
-    for (let i = 0; i < MAX_COLORS; i++) {
+    for (let i=0; i < MAX_COLORS; i++) {
         if (i === correctPosition) {
             await getCorrectColor(i + 1)
         } else {
@@ -273,4 +255,3 @@ const letsPlay = async () => {
         }
     }
 }
-
