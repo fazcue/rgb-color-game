@@ -1,0 +1,223 @@
+body {
+	padding: 10px;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	line-height: 1.6;
+	font-size: 18px;
+    background-color: #222;
+    color: white
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#difficulty {
+    align-self: center;
+}
+
+.easy {
+    background-color: aquamarine;
+    border-color: #222;
+    font-size: 20px;
+}
+
+.medium {
+    background-color: coral;
+    border-color: #222;
+    font-size: 20px;
+}
+
+.hard {
+    background-color: crimson;
+    border-color: #222;
+    font-size: 20px;
+}
+
+#color {
+    font-size: 24px;
+    align-self: center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+#message {
+    font-size: 24;
+    align-self: center;
+    margin: 20px;
+    text-align: center;
+}
+
+#results {
+    font-size: 24;
+    align-self: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#list {
+    margin: 10px;
+    align-self: center;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.btn {
+    height: 120px;
+    width: 120px;
+    margin: 4px;
+    border-radius: 50%;
+}
+
+.bigButton {
+    height: 150px;
+    width: 150px;
+    color: white;
+}
+
+.button {
+    padding: 10px;
+    font-size: 22px;
+    margin: 5px;
+}
+
+#buttons {
+    align-self: center;
+    display: grid;
+}
+
+#play {
+    display: none;
+}
+
+#changeDifficulty {
+    display: none;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        height: 100px;
+        width: 100px;
+        margin: 4px;
+        border-radius: 50%;
+    }
+    .bigButton {
+        height: 130px;
+        width: 130px;
+        color: white;
+    }
+    img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+    .easy {
+        background-color: aquamarine;
+        border-color: #222;
+        font-size: 20px;
+    }
+    .medium {
+        background-color: coral;
+        border-color: #222;
+        font-size: 20px;
+    }
+    .hard {
+        background-color: crimson;
+        border-color: #222;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        height: 60px;
+        width: 60px;
+        margin: 4px;
+        border-radius: 50%;
+    }
+    .bigButton {
+        height: 90px;
+        width: 90px;
+        color: white;
+    }
+    img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+    .easy {
+        background-color: aquamarine;
+        border-color: #222;
+        font-size: 12px;
+    }
+    .medium {
+        background-color: coral;
+        border-color: #222;
+        font-size: 12px;
+    }
+    .hard {
+        background-color: crimson;
+        border-color: #222;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .btn {
+        height: 50px;
+        width: 50px;
+        margin: 4px;
+        border-radius: 50%;
+    }
+    .bigButton {
+        height: 80px;
+        width: 80px;
+        color: white;
+    }
+    img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+    .easy {
+        background-color: aquamarine;
+        border-color: #222;
+        font-size: 10px;
+    }
+    .medium {
+        background-color: coral;
+        border-color: #222;
+        font-size: 10px;
+    }
+    .hard {
+        background-color: crimson;
+        border-color: #222;
+        font-size: 10px;
+    }
+}

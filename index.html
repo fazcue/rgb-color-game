@@ -1,0 +1,29 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>RGB Color Game</title>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="content">
+            <h1 id="title">Get a random RGB color and try to guess it!</h1>
+            <div id="difficulty">
+                <h2>Select a difficulty:</h2>
+                <button id="easy" class="btn easy" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'easy')">Easy</button>
+                <button id="medium" class="btn medium" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'medium')">Medium</button>
+                <button id="hard" class="btn hard" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'hard')">Hard</button>
+            </div>
+            <div id="color"></div>
+            <div id="list"></div>
+            <div id="message">You will be getting multiple colors depending selected difficulty, where only 1 color will be the correct answer.</div>
+            <div id="results"></div>
+            <div id="buttons">
+                <button id="play" class="button" onclick="letsPlay()">Lets Play!</button>
+                <button id="changeDifficulty" class="button" onclick="changeDiff()">Change difficulty</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
