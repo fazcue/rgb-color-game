@@ -10,25 +10,25 @@
         <div id="content">
             <h1 id="title">Get a random RGB color and try to guess it!</h1>
             <div id="difficulty">
-                <h2>Select a difficulty:</h2>
+                <h2>Select a difficulty</h2>
                 <button id="easy" class="btn easy" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'easy')">Easy</button>
                 <button id="medium" class="btn medium" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'medium')">Medium</button>
                 <button id="hard" class="btn hard" onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)" onclick="setDifficulty(this, 'hard')">Hard</button>
             </div>
             <div id="color"></div>
             <div id="list"></div>
-            <div id="message">You will be getting multiple colors depending selected difficulty, where only 1 color will be the correct answer.</div>
+            <div id="message">You will be getting multiple colors depending selected difficulty, where <strong>only 1 color</strong> will be the correct answer.</div>
             <div id="results"></div>
             <div id="buttons">
-                <!--<button id="deleteOne" class="button" onclick="deleteOneRandom()" disabled>Need help? Delete One!</button>-->
                 <button id="play" class="button" onclick="letsPlay()" disabled>Lets Play!</button>
+                <button id="changeDifficulty" class="button" onclick="changeDiff()">Change difficulty</button>
             </div>
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <span class="close-modal">&times;</span>
-                    <p>Colors that you missed:</p>
+                    <p id="total-points">Total points: <span id="points"></span></p>
+                    <p>Colors you missed in this round:</p>
                     <div id="missed-colors"></div>
-                    <button id="changeDifficulty" class="button" onclick="changeDiff()">Change difficulty</button>
                 </div>
             </div>
         </div>

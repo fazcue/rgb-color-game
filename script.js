@@ -2,7 +2,6 @@ const title = document.querySelector('#title')
 const color = document.querySelector('#color')
 const list = document.querySelector('#list')
 const play = document.querySelector('#play')
-// const deleteOne = document.querySelector('#deleteOne')
 const message = document.querySelector('#message')
 const results = document.querySelector('#results')
 const difficulty = document.querySelector('#difficulty')
@@ -13,10 +12,12 @@ const hard = document.querySelector(`#hard`)
 const modal = document.querySelector('#modal')
 const missedColors = document.querySelector('#missed-colors')
 const closeModal = document.querySelector('.close-modal')
+const totalPoints = document.querySelector('#points')
 
 let DIFFICULTY_LEVEL = 'easy'
 let MAX_COLORS = 3
 let COUNT = 1
+let TOTAL_POINTS = 0
 let CORRECT_POSITION = 0
 const WRONG_ANSWER = 'Wrong! :( Keep trying!'
 const CORRECT_ANSWER = 'Correct! :)'
@@ -137,6 +138,11 @@ const clearExtraColors = (correct) => {
     }
 }
 
+const setTotalPoints = () => {
+    TOTAL_POINTS += MAX_COLORS - DELETED_COLORS.length - 1
+    totalPoints.innerText = TOTAL_POINTS
+}
+
 const gameCleared = () => {
     message.innerText = CORRECT_ANSWER
     results.innerText = `You needed ${COUNT} attempt/s to guess it.`
@@ -146,8 +152,7 @@ const gameCleared = () => {
     play.style.display = 'block'
     changeDifficulty.style.display = 'block'
     changeDifficulty.disabled = false
-    // deleteOne.style.display = 'none'
-    // deleteOne.disabled = true
+    setTotalPoints()
     wrongColorsList()
 }
 
@@ -216,8 +221,6 @@ const getCorrectColor = async (position) => {
             //show list AND 'Deleted One!' button if it is last color
             if (position === MAX_COLORS) {
                 showColors()
-                // deleteOne.style.display = 'block'
-                // deleteOne.disabled = false
             }
         })
 }
@@ -263,33 +266,6 @@ const setDifficulty = (element, difficulty) => {
     }
 }
 
-// const deleteOneRandom = () => {
-//     //get random color from EXTRA_COLORS
-//     const colorToDelete = EXTRA_COLORS[Math.floor(Math.random() * EXTRA_COLORS.length)]
-
-//     //get index
-//     const position = EXTRA_COLORS.indexOf(colorToDelete)
-
-//     //get button
-//     let colorButton = document.querySelector(`#btn-${position}`)
-
-//     //add +1 to count
-//     COUNT += 1
-
-//     //add disabled attribute
-//     colorButton.disabled = true
-
-//     //Change opacity
-//     colorButton.style.opacity = 0.1
-
-//     //Add color deleted to DELETED_COLORS
-//     DELETED_COLORS.push({color: colorToDelete, position: position})
-
-//     //Disable 'Delete One!' button
-//     deleteOne.disabled = true
-//     deleteOne.style.display = 'none'
-// }
-
 const letsPlay = async () => {
     //first, restore data
     list.innerHTML = ''
@@ -318,10 +294,6 @@ const letsPlay = async () => {
     //set "Play!" button disabled and hide it
     play.disabled = true
     play.style.display = 'none'
-
-    //restore 'Delete One' button
-    // deleteOne.disabled = false
-    // deleteOne.style.display = 'block'
 
     //set "Change difficulty" button disabled and hide it
     changeDifficulty.disabled = true
