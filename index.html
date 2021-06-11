@@ -20,8 +20,16 @@
             <div id="message">You will be getting multiple colors depending selected difficulty, where only 1 color will be the correct answer.</div>
             <div id="results"></div>
             <div id="buttons">
-                <button id="play" class="button" onclick="letsPlay()">Lets Play!</button>
-                <button id="changeDifficulty" class="button" onclick="changeDiff()">Change difficulty</button>
+                <!--<button id="deleteOne" class="button" onclick="deleteOneRandom()" disabled>Need help? Delete One!</button>-->
+                <button id="play" class="button" onclick="letsPlay()" disabled>Lets Play!</button>
+            </div>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <p>Colors that you missed:</p>
+                    <div id="missed-colors"></div>
+                    <button id="changeDifficulty" class="button" onclick="changeDiff()">Change difficulty</button>
+                </div>
             </div>
         </div>
         <script src="script.js"></script>
